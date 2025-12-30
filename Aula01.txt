@@ -1,0 +1,164 @@
+Aula 1 – História do PHP
+
+
+Em 1970 surge a internet.
+Em 1990 surgiu a World Wide Web, o protocolo HTTP, e o HTML.
+
+O HTTP e o HTML funcionam em conjunto para conversa entre servidores e clientes.
+
+Todo HTML que você quer disponibilizar para o maior número de clientes possível tem que estar num servidor. A função do HTTP é pegar o documento HTML e enviar para o cliente.
+
+Toda essa base foi criada em 1990.
+
+Funciona para arquivos HTML, de imagens, sons, o que for necessário enviar.
+
+Até então era só assim, só envio de arquivos, sem nenhuma interação.
+
+Em 1994, um usuário fez a seguinte pergunta: "E se eu quiser saber quantos usuários estão visitando o meu site?". O nome dele é Rasmus Lerdorf. Ele nasceu na Groenlândia, cresceu na Dinamarca e mais tarde foi pro Canadá. 
+
+Ele era bom em C, aí criou uma interface para permitir isso (saber quantos usuários visitam o site).
+
+Ele batizou de Personal Home Page Tools. Isso deu origem ao nome PHP.
+
+No início, PHP não era uma linguagem de programaão, era só uma interface para poder verificar quantos visitantes estavam acessando o site naquele momento.
+
+Essa CGI era chamada dentro de comentários HTML. E usava comandos muito simples, baseados na linguagem Perl. 
+
+Até hoje o PHO usa muitos comando que existem no Perl.
+
+Essa ferramenta fez sucesso e inspirou Rasmus a criar mais. Como, por exemplo, um livro de visitas para um site.
+
+Hoje em dia, quando você entra num site, é simples você deixar comentários ali em baixo, em 1994 não era assim.
+
+Ele criou uma maneira de o usuários deixarem mensagens para os donos dos sites através de formulários personalizados.
+
+Então, a partir da 2a versão de PHP, ele permitiu a interpretação de formulários.
+
+Rasmus então renomeou seu projeto para Personal Home Page Forms Interpreter.
+
+Ela ficou ainda mais popular e ficou conhecida como PHP/FI. Ele ainda não era uma linguagem. Era uma biblioteca, uma CGI(Common Gateway Interface), uma interface que auxilia com algumas ferramentas a sua homepage.
+
+
+
+
+
+[ChatGPT sobre CGI e PHP Resumo -> CGI era uma forma mais primitiva de permitir que os servidores web interagissem com scripts dinâmicos. 
+
+[resposta integral abixo]
+
+CGI (Common Gateway Interface) é um padrão que define como um servidor web pode interagir com programas externos para gerar conteúdo dinâmico na web. Em outras palavras, é uma maneira de permitir que os servidores web comuniquem com aplicativos (normalmente scripts ou programas) para gerar respostas dinâmicas baseadas na solicitação do usuário.
+
+### Como o CGI funciona?
+
+Quando um usuário acessa uma página web, o servidor web, como o Apache ou o Nginx, pode ter configurado um script CGI para gerar conteúdo dinâmico (como exibir informações de um banco de dados ou processar um formulário). O servidor envia os dados para o CGI, que processa essa solicitação e retorna uma resposta, que é então enviada de volta ao navegador do usuário.
+
+Os scripts CGI podem ser escritos em várias linguagens de programação, como Perl, Python, C, e, mais tarde, PHP.
+
+### O CGI no contexto do PHP
+
+No início do PHP (quando ainda era conhecido como **Personal Home Page Tools**, ou *PHP/FI*), ele funcionava, basicamente, como uma ferramenta para ajudar a criar páginas dinâmicas. Antes do PHP se tornar tão popular, a maioria dos scripts de interação com o servidor eram implementados através de CGI.
+
+Em termos simples, **CGI era uma forma mais primitiva de permitir que os servidores web interagissem com scripts dinâmicos** para criar páginas dinâmicas, antes de ferramentas como PHP e ASP se popularizarem. O PHP, no seu começo, foi usado como uma solução mais simples e eficiente para substituir o CGI e a complexidade que ele envolvia, especialmente quando usado com linguagens como C.
+
+### Diferença entre CGI e PHP
+
+1. **Desempenho**: O CGI, especialmente quando implementado com linguagens como Perl ou C, pode ser mais lento porque cada requisição ao servidor cria um novo processo. Isso pode sobrecarregar o servidor quando há muitas requisições simultâneas. O PHP, por outro lado, foi projetado para ser mais rápido, processando scripts dentro do próprio servidor sem a necessidade de criar novos processos constantemente.
+
+2. **Facilidade de uso**: O CGI exige que o programador escreva código em linguagens mais complexas, como C, enquanto o PHP foi criado para ser mais fácil de usar, focando em desenvolvedores web.
+
+3. **Capacidade de interação com bancos de dados**: O CGI é mais limitado em termos de interação com bancos de dados de forma eficiente, enquanto o PHP foi projetado para facilitar esse tipo de interação.
+
+Em resumo, o CGI era uma tecnologia de interface usada para permitir a criação de páginas dinâmicas no início da web, e o PHP começou como uma forma de substituir essas soluções mais complexas e lentas, proporcionando uma forma mais fácil e eficiente de gerar conteúdo dinâmico em sites.
+
+]
+
+
+
+Rasmus queria que a ferramenta crescesse. Para isso, em 1996, ele liberou o acesso do código fonte a outros programadores. Logo o PHP/FI ganhou funcionalidade muito importantes, como, por exemplo, o acesso a uma base de dados (banco de dados).
+
+A popularização foi tão grande que em 1997, mais de 60.000 domínios já usavam PHP.
+
+Em 1998, dois amigos israelenses, Zeev Surask e Andi Gutmans, que eram também programadores, resolveram reescrever por completo o PHP, dando a ele as características de linguagem de programação que o PHP já estava ganhando.
+
+A partir daí, o PHP se transformou em algo muito maior. Muito maior que seu pequeno nome. Mas ele já era muito conhecido, seria um tiro no pé mudar. Então, eles resolveram mudar o nome da linguagem, mas preservar a sua sigla.
+
+A partir da versão 3.0 ele acabou se chamando "PHP: Hypertext Preprocessor.". Sim, O primeiro P é de PHP.
+
+É um acrônimo recursivo, assim como o GNU.
+
+Aqui já estamos em 1999. E 10% dos sites já usavam PHO de alguma maneira.
+
+Depois ele cresceu mais e mais. E muitos erros e falhas e segurança foram sendo descorbertos.
+
+Em 2000 surge a versão PHP 4, que teve 3 versões. O principal foco foi resolver problemas de segurança.
+
+Em 2004, o Zeev e o Andi, resolveram criar uma nova ENGINE, um novo núcleo para a linguagem. Surge, então, o PHP 5.
+
+O PHP teve 32 versões (até o momento da gravação do vídeo do Guanabara), mais de 1000 correções de falhas de segurança, e seu marco de surgimento foi a engine 2.0.
+
+Essa versão popularizou absurdamento o PHP.
+
+Em 2004, já se discutia o grande calo no sapato do PHP: o Unicode.
+Até a gravação do vídeo o PHP ainda tinha problemas de interpretação Unicode.
+
+Em 2006, começou a se falar sobre esses problemas do Univode, e seria a versão 6, que não foi lançada.
+
+Em 2013, a versão estava ainda no PHP 5.5. É claro que muitas promessas que iriam para o 6 já foram implementas.
+
+Esste curso é até a versão 5.5 da linguagem. 
+
+[Hoje, praticamente em 2026, estamos no 8.5 pelo que pesquisei.]
+
+Ele falou do patrocínio da hostnet e que eles podem criar um site pra você em PHP e depois você pode mexer no site.
+
+Em 2013 (data do vídeo), estima-se que eram 75% servidores usando PHP.
+
+No site 
+
+    museum.php.net 
+
+você pode ter acesso a todas as versões antigas no PHP. Lá você pode baixar todas as versões e compreender essa evolução.
+
+O síbolo do elefante foi escolhido porque a estrutura das 3 letras juntas parece um elefante.
+
+Muita gente cria sites em PHP sem saber uma linha de PHP.
+
+Com a popularidade, muitas pessoas começaram a criar sistemas de gerenciamento de conteúdo. 
+E, hoje, é possível criar um site completo utilizando o
+
+    WordPress, Joomia, Drupal;
+
+criar uma loja eletrônica utilizando o
+
+    Magento, Prestashop;
+
+gerenciar a empresa com 
+
+    SugarCRM; 
+
+criar uma rede colaborativa de conteúdo utilizando o 
+
+    MediaWiki;
+
+redes sociais utilizando o 
+
+    ELGG; 
+
+fóruns utilizando o 
+
+    PHPBB; 
+
+ambientes educacionais utilizando o 
+
+    Moodle. 
+
+Todas essas ferramentas são criadas em linguagem PHP.
+
+Em todas essas ferramentas você não precisa saber PHP, mas se souber, você consegue personalizar. Exemplo, temas personalizados de WordPress, módulos de Joomia... E é por isso que aprender essa linguagem é uma boa.
+
+O Zeev e o Andi criaram a empresa Zend. É uma empresa responsável por manter o core do PHO e criar um dos frameworks mais famosos da linguagem, o Zend Framework.
+
+O Rasmus trabalhou no Yahoo! e depois foi para comércio eletrônico voltado para artistas. 
+
+
+[É isso aí, curso antigo, mas deu rpa aprender muita coisa mesmo nesta aula que seria somente histórica.]
