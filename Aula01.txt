@@ -156,7 +156,7 @@ Todas essas ferramentas são criadas em linguagem PHP.
 
 Em todas essas ferramentas você não precisa saber PHP, mas se souber, você consegue personalizar. Exemplo, temas personalizados de WordPress, módulos de Joomia... E é por isso que aprender essa linguagem é uma boa.
 
-O Zeev e o Andi criaram a empresa Zend. É uma empresa responsável por manter o core do PHO e criar um dos frameworks mais famosos da linguagem, o Zend Framework.
+O Zeev e o Andi criaram a empresa Zend. É uma empresa responsável por manter o core do PHP e criar um dos frameworks mais famosos da linguagem, o Zend Framework.
 
 O Rasmus trabalhou no Yahoo! e depois foi para comércio eletrônico voltado para artistas. 
 

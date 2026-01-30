@@ -1,0 +1,81 @@
+Como funciona o PHP?
+
+PHP sem o HTML não funciona pra muita coisa.
+
+HTML    -> conteúdo
+CSS     -> estilo
+JS      -> interatividade
+PHP     -> funcionalidades adicionais
+
+NUma relação um cliente um servidor, o cliente tem [ou tinha, a depender o servidor hoje em dia] mais trabalho.
+
+HTML, CSS, JS, FLASH(não se usa mais) são client-side.
+
+Quando você acessava um site com conteúdo em Flash pela primeira vez num computador recém formatado, você precisava instalar um plugin de Flash. Porque o Flash roda no cliente e não no servidor.
+
+Então, se é uma tecnologia client-side, todos os plugins e adicionais são instalados diretamente do lado do cliente, porque ele que é o responsável por processar tudo.
+
+---
+
+No server-side, para fornecer arquivos PHP, o servidor não vai simplesmente enviar os arquivos. Esse servidor precisa ser especialmente preparado.
+
+Para isso, ele usa uma ferramenta tradicional para transformar o computador em um servidor, que é o Apache - que também é utilizado nos modelos de HTML. Mas esse Apache tem uma funcionalidade adicional, a que chamamos de 'interpretador PHP' - é a "máquina" da aula passada, criada pela Zend e que interpreta scripts PHP.
+
+PHP são programas dentro do HTML.
+
+Só que eles são muito poderosos e podem, inclusive, fazer acesso a banco de dados.
+
+A partir do momento que o interpretador PHP começa a agir, todo código inserido dentro do documento começa a ser processado. 
+
+Esse processamento vai gerar um arquivo HTML.
+
+Nesse arquivo vai existir somente tags HTML ou qualquer outra tecnologia client-side.
+
+Esse arquivo gerado não será armazenado no servidor, ele será enviado diretamente para você cliente, que solicitou.
+
+Cliente <---> infraestutura de internet <---> servidor --> PHP --> consulta BD --> PHP cria HTML personalizado a partir dos dados do BD --> servidor envia HTML para o cliente.
+
+Nessa ótica agora, quem está tendo mais trabalho é o servidor.
+
+client-side são tecnologias que rodam do lado do cliente.
+server-side são tecnologias que rodam do lado do servidor.
+
+
+    PHP (Hypertext Preprocessor): linguagem de script para criar páginas web dinâmicas.
+
+Outras tecnologias server-side:
+
+    ASP (Active Server Pages): tecnologia da Microsoft para gerar páginas dinâmicas no servidor, integrada ao IIS.
+
+    JSP (Java Server Pages): usa Java no servidor para criar páginas web dinâmicas.
+
+    Ruby (Ruby on Rails): linguagem usada no server-side, popular com o framework Ruby on Rails.
+
+    Python (Python com Django/Flask): usada com frameworks para backend.
+
+    Node.js (Node JavaScript): ambiente JavaScript para rodar código server-side.
+
+    ColdFusion (ColdFusion Markup Language): plataforma da Adobe para desenvolvimento web dinâmico.
+
+Guanabara, vou precisar de um servidor? Sim.
+Vou precisar gastar dinheiro contratando um servidor para poder aprender PHP? Não.
+
+Nós vamos dividir seu computador em duas partes. Um lado será o lado do cliente, onde você já tem um navegador instalado. Do outro lado, será um servidor, onde instalaremos o apache, instalaremos também uma ferramenta de banco de dados, que neste caso será o MySQL, e também o interpretador PHP.
+
+A maneira tradicional de fazer isso é entrar no site de cada um, baixar cada um deles e modificar umas 300 linhas em mais ou menos uma hora.
+
+Mas, graças a facilidade da internet, muitos programadores criaram ferramentas para facilitar a instalação.
+
+Apache,     A
+MySQL,      M
+PHP         P
+
+Tradicionalmente chamados esse conjunto de 'AMP'.
+
+Então, se você utiliza 'Windows', basta procurar uma ferramenta 'WAMP'.
+
+Caso você use Linux, procure por 'LAMP'.
+
+E se você utiliza MacOS, procure por 'MAMP'.
+
+Você terá então de usar um AMP, LAMP ou MAMP (de acordo com a sua plataforma) e um editor de texto de sua preferência.
