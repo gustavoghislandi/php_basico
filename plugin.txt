@@ -1,0 +1,20 @@
+Plugin - vem de “plug-in”, no sentido de conectar / encaixar algo ao sistema principal.
+
+Um plugin é um componente adicional que se conecta a um software para "adicionar funcionalidades específicas", geralmente rodando “dentro” dele (do software).
+
+Diferença:
+
+    Plugin: termo mais geral; comum em programas como editores, players, CMS.
+
+    Extensão: tipo de plugin, mas mais usado para navegadores, focado em alterar a interface ou comportamento do navegador.
+
+Exemplos de plugins:
+
+    Plugin de SEO no WordPress
+    Plugin de efeitos de áudio em um editor de som
+    Plugin de pagamento em uma loja virtual
+
+Pense no software como uma tomada e no plugin como um aparelho.
+O plugin não funciona sozinho: ele é encaixado no software e usa a energia (recursos) dele para funcionar.
+
+Então, o software sendo uma caixa grande que faz algo, o plugin é uma caixa menor que se acopla a ele e usa recursos que tem dentro da caixa gerando um output diferente. Ou seja, é um subsistema de um sistema maior, passível de modificar processos do sistema maior, resultando em uma saída diferente da usual do sistema.
