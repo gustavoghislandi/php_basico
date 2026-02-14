@@ -66,3 +66,36 @@ Para enviar os arquivos para o servidor:
 
     sudo cp url_origem /var/www/html
 -------------------
+
+É possível usar tags HTML dentro do comando echo. Exemplo:
+
+    <?php 
+        echo "<h2>Olá, Mundo!</h2>";
+    ?>
+
+É possível alterar o estilo também, sem problemas.
+
+Na inspeção do código visto no navegador, as supertags são eliminadas.
+
+Isso mostra que o que vai pro cliente é só o HTML, o que o PHP fez foi processar o HTML.
+
+É importante o arquivo estar em UTF-8 e usar extensão .php, senão o que estiver dentro das supertags de PHP não será interpretado.
+
+Perceba que o PHP é uma tecnologia de complemento a HTML e as CSS.
+
+O site da comunidade é:
+
+    php.net
+
+Nela você encontra a documentação do PHP. Serve para inciantes e experientes na linguagem.
+
+Você pode ir em Documentation > Selecione uma Língua (Portuguese) > Referência da Linguagem > Escapando o HTML
+
+É possível baixar ela também em Documentation > documentation downloads > aí selecione qual você quer.
+
+    Hoje em dia só tem 'html.gz' e 'tar.gz' (antes tinha 'chm', que era só pra windows e tinha um 'chm' com comentários dos usuários)
+
+        html.gz é um HTML gigante.
+        tar.gz são vários HTMLs.
+
+[Considero interessante estudar um pouquinho pelo "Escapando o HTML - apagar isso depois]
