@@ -1,0 +1,81 @@
+O que aparece no phpinfo()
+
+---
+
+Resumo das seções do phpinfo() que apareceu para mim:
+
+1. Configuration – Informações gerais de PHP, versão e diretivas carregadas.
+2. apache2handler – Integração do PHP com o Apache e módulos ativos.
+3. Apache Environment – Variáveis de ambiente do Apache.
+4. HTTP Headers Information – Cabeçalhos HTTP enviados pelo servidor.
+5. calendar – Funções de calendário e manipulação de datas especiais.
+6. Core – Diretivas básicas do PHP (`memory_limit`, `max_execution_time`, etc.).
+7. ctype – Funções para verificação de tipos de caracteres.
+8. date – Configuração de fuso horário e funções de data/hora.
+9. exif – Leitura de metadados de imagens (EXIF).
+10. FFI – Interface para chamadas de código C a partir do PHP.
+11. fileinfo – Identificação de tipos de arquivos.
+12. filter – Filtragem e validação de dados.
+13. ftp – Funções de acesso a servidores FTP.
+14. gettext – Suporte a internacionalização (i18n) de strings.
+15. hash – Funções de hash (md5, sha1, etc.).
+16. iconv – Conversão entre diferentes codificações de caracteres.
+17. json – Funções para manipulação de JSON.
+18. libxml – Biblioteca para manipulação de XML.
+19. mysqli – Extensão MySQLi para acesso a bancos de dados MySQL.
+20. mysqlnd – Driver nativo do MySQL para PHP.
+21. openssl – Criptografia, certificados e funções de segurança.
+22. pcre – Suporte a expressões regulares.
+23. PDO – Interface unificada para bancos de dados (PHP Data Objects).
+24. pdo_mysql – Driver PDO para MySQL.
+25. Phar – Criação e leitura de arquivos PHAR (pacotes PHP).
+26. posix – Funções para sistemas POSIX (Linux/Unix).
+27. random – Funções para geração de números aleatórios seguros.
+28. readline – Funções para entrada de linha de comando interativa.
+29. Reflection – Inspeção de classes, métodos e funções em tempo de execução.
+30. session – Configurações de sessão (`session.save_path`, cookies, etc.).
+31. shmop – Operações de memória compartilhada.
+32. sockets – Funções de rede via sockets.
+33. sodium – Criptografia moderna (libsodium).
+34. SPL – Standard PHP Library (coleções, iteradores, interfaces).
+35. standard – Funções básicas do PHP (strings, arrays, etc.).
+36. sysvmsg – Filas de mensagens do sistema (IPC).
+37. sysvsem – Semáforos do sistema (IPC).
+38. sysvshm – Memória compartilhada do sistema (IPC).
+39. tokenizer – Quebra de código PHP em tokens para análise.
+40. Zend OPcache – Cache de código PHP compilado para melhorar performance.
+41. zlib – Compressão e descompressão de dados.
+42. Additional Modules – Outros módulos PHP habilitados.
+43. Environment – Variáveis de ambiente do servidor/sistema.
+44. PHP Variables – Superglobais e variáveis do PHP (`$_SERVER`, `$_ENV`, `$_GET`, etc.).
+
+
+---------------------------------
+O phpinfo() é basicamente um painel de referência do PHP e do servidor. Para aprender cada parte:
+
+1. PHP (linguagem e funções)
+
+    Cursos básicos: YouTube, Udemy ou Codecademy.
+
+    Livro recomendado: “PHP & MySQL: Novice to Ninja” (bem completo).
+
+2. php.ini e diretivas
+
+    Leia a documentação oficial do PHP: https://www.php.net/manual/pt_BR/ini.list.php
+
+    Cada diretiva que você vê no phpinfo() tem explicação lá, exemplo: memory_limit, upload_max_filesize.
+
+3. Extensões
+
+    Aprender pra que serve cada extensão.
+
+    Documentação oficial ou vídeos tutoriais: GD (imagens), PDO/MySQL (banco de dados), cURL (requisições HTTP).
+
+4. Servidor web (Apache/Nginx)
+
+    Conhecer diretórios, módulos, document root.
+
+    Há guias de “hardening PHP” que explicam cada configuração de segurança.
+
+----
+Pegue o phpinfo() e abra ele no navegador. Depois, faça uma anotação seção por seção, e vá pesquisando na documentação oficial do PHP e do Apache. É muita informação, mas se você estudar parte por parte, fica super didático.

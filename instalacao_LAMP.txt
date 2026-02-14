@@ -1,0 +1,57 @@
+Iniciar/Parar serviços
+
+Apache (servidor web)
+
+    sudo systemctl start apache2    # iniciar
+    sudo systemctl stop apache2     # parar
+    sudo systemctl restart apache2  # reiniciar
+    sudo systemctl status apache2   # ver status
+
+
+MariaDB (banco de dados)
+
+    sudo systemctl start mariadb
+    sudo systemctl stop mariadb
+    sudo systemctl restart mariadb
+    sudo systemctl status mariadb
+
+2️⃣ Testar Apache
+
+    Abra o navegador e vá para:
+
+        http://localhost
+
+
+Se aparecer “It works!”, o Apache está rodando.
+
+3️⃣ Testar PHP
+
+    Crie um arquivo de teste:
+
+        sudo nano /var/www/html/info.php
+
+
+Coloque dentro:
+
+    <?php
+    phpinfo();
+    ?>
+
+
+Salve e abra no navegador:
+
+    http://localhost/info.php
+
+
+    Se aparecer a página com as informações do PHP, tudo está funcionando.
+
+4️⃣ Configurar MariaDB (segurança)
+
+    sudo mysql_secure_installation
+
+
+Ele vai te guiar para:
+
+    Criar senha de root
+    Remover usuários/DB de teste
+    Aumentar segurança

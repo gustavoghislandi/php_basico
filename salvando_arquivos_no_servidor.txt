@@ -1,0 +1,3 @@
+Para enviar os arquivos para o servidor:
+
+    sudo cp url_origem /var/www/html

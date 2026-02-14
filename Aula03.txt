@@ -1,0 +1,68 @@
+Como Instalar o PHP
+
+Use o WAMP ou LAMP.
+
+O Guanabara usa o EasyPHP, que liga e desliga serviços bem facilmente. Ele é um WAMP. Em www.easyphp.org baixe a versão de desenvolvimento (não a personal web hosting).
+
+O PHPStorm ele baixa no site www.jetbrains.com . (Funciona por 30 dias a Trial)
+
+Se você quiser, você pode usar outras ferramentas, outros editores de código. A forma de uso ele vai demonstrar usando essas ferramentas.
+
+[ELe falou da RenderAe que apoia ele e fez as animações dos vídeos dele. Além da JetBrains e Baixaki(ainda existe?). Além de HostNet e t1Site.]
+
+----------------
+
+No LMDE, você instala os 3 via apt (separados ou juntos):
+
+    sudo apt update
+    sudo apt install apache2 mariadb-server php libapache2-mod-php php-mysql
+
+
+Isso instala:
+
+    Apache HTTP Server
+    MariaDB (alternativa ao MySQL)
+    PHP
+
+Depois disso, o servidor já estará rodando.
+----------------
+
+NOTA: O MariaDB pode ter desempenho pior quando se usa muito JSON, por exemplo, porque ele guarda JSOn em string, já o MySQL armazena em formato binário interno.
+
+Hoje em dia tem o XAMPP, que instala tudo. Veja mais em XAMPP.txt
+
+-----------
+Lembrando: No seu computador (offline) está dividido em cliente e servidor.
+
+Com o EasyPHP tem um lugar específico pra salvar os arquivos, que é em EasyPHP.../data/localweb/, aqui você coloca o arquivos.
+
+No caso de outra versão é dentro da pasta EasyPHP.../www.
+
+No Linux, provavalmente é em /var/www/html/ que é onde está o index.html do servidor apache, por padrão.
+
+--
+    Resumo bem enxuto:
+
+        * PHP só funciona em pastas que o servidor web acessa (document root).
+        * Windows / EasyPHP: arquivos vão em `localweb` ou `www`.
+        * Linux / Apache: padrão é `/var/www/html/`.
+        * Fora dessas pastas, o servidor não processa PHP sem configuração extra.
+--
+
+Uma supertag: é utilizada para colocar outras linguagens, como PHP.
+    Exemplo:
+
+        <?php 
+            echo "Olá, Mundo!";
+            ?> 
+
+    Tudo que estiver dentro dessas supertags será considerado código PHP.
+    Para um código PHP, você pode colocar mais de um comando dentro dela.
+    O comando 'echo' é para escrever algo na tela.
+    O ponto-vírgula no PHP indica o final do comando.
+
+-------------------
+Para enviar os arquivos para o servidor:
+
+    sudo cp url_origem /var/www/html
+-------------------

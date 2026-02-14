@@ -1,0 +1,42 @@
+Via XAMPP é ainda mais simples (vem tudo junto: Apache, MariaDB e PHP).
+
+Passo a passo no LMDE:
+
+    1️⃣ Baixe o instalador no site oficial (arquivo .run).
+    2️⃣ Dê permissão de execução:
+
+    chmod +x xampp-linux-*.run
+
+
+3️⃣ Execute como root:
+
+    sudo ./xampp-linux-*.run
+
+
+4️⃣ Inicie o XAMPP:
+
+    sudo /opt/lampp/lampp start
+
+
+Depois acesse no navegador:
+
+    http://localhost
+
+
+Se aparecer a página do XAMPP, está funcionando ✅
+
+--------
+
+Por que XAMPP, o que é a sigla?
+
+XAMPP é um pacote que já vem com servidor web, banco de dados e PHP prontos para usar.
+
+A sigla significa:
+
+    X – Multiplataforma (funciona em Linux, Windows, macOS)
+    A – Apache
+    M – MariaDB (antes era MySQL)
+    P – PHP
+    P – Perl
+
+Ele é usado principalmente para desenvolvimento local, porque facilita instalar tudo de uma vez só.
