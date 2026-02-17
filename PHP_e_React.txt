@@ -1,0 +1,89 @@
+Sim — **você pode usar PHP e React no “mesmo HTML”**, mas é importante entender **como eles funcionam juntos**.
+
+### 🧠 Diferença principal
+
+* **PHP** roda **no servidor** (antes da página chegar ao navegador).
+* **React** roda **no navegador** (no cliente), usando JavaScript.
+
+Ou seja: o PHP gera o HTML inicial, e o React assume partes da interface depois que a página carrega.
+
+---
+
+## ✅ Forma mais simples (React dentro de um arquivo PHP)
+
+Você pode ter um arquivo `index.php` assim:
+
+```php
+<!DOCTYPE html>
+<html>
+<head>
+  <title>PHP + React</title>
+</head>
+<body>
+
+<h1><?php echo "Olá do PHP!"; ?></h1>
+
+<div id="app"></div>
+
+<!-- React via CDN -->
+<script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+<script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+<script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+
+<script type="text/babel">
+  function App() {
+    return <h2>Olá do React!</h2>;
+  }
+
+  ReactDOM.createRoot(document.getElementById('app')).render(<App />);
+</script>
+
+</body>
+</html>
+```
+
+👉 O PHP gera o HTML
+👉 O React controla a `<div id="app">`
+
+---
+
+## ✅ Forma profissional (mais usada)
+
+* PHP funciona como **API backend**
+* React é um **frontend separado**
+* React consome dados via `fetch()` ou Axios
+
+Exemplo:
+
+* Backend: `api.php`
+* Frontend: app criada com Vite ou Create React App
+
+Fluxo:
+
+```
+React → requisição HTTP → PHP → banco de dados → resposta JSON → React atualiza a tela
+```
+
+---
+
+## ⚠️ Importante
+
+Você **não mistura JSX diretamente com PHP** dentro do mesmo bloco. Eles rodam em momentos diferentes.
+
+Errado:
+
+```php
+<?php echo <h1>{variavelReact}</h1>; ?>
+```
+
+Isso não funciona.
+
+---
+
+## 🎯 Quando usar cada abordagem?
+
+| Caso           | Melhor opção             |
+| -------------- | ------------------------ |
+| Site simples   | React dentro do PHP      |
+| Sistema grande | React separado + PHP API |
+| SPA moderna    | React separado           |

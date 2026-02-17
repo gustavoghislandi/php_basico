@@ -97,5 +97,3 @@ Você pode ir em Documentation > Selecione uma Língua (Portuguese) > Referênci
 
         html.gz é um HTML gigante.
         tar.gz são vários HTMLs.
-
-[Considero interessante estudar um pouquinho pelo "Escapando o HTML - apagar isso depois]

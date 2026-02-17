@@ -1,0 +1,76 @@
+
+Separação de instruções ¶
+
+Como em C ou Perl, o PHP requer que as instruções sejam terminadas com um ponto e vírgula no final de cada declaração. A tag de fechamento de um bloco de código PHP implica automaticamente em um ponto e vírgula; a última linha de um bloco PHP não precisa ser terminada com um ponto e vírgula. A tag de fechamento do bloco incluirá uma nova linha em seguida, se estiver presente.
+
+Exemplo #1 Exemplo mostrando a tag de fechamento incluindo uma nova linha final
+<?php echo "Algum texto"; ?>
+Sem nova linha
+<?= "Mas agora há uma nova linha" ?>
+
+Output of the above example in PHP 8.5.0:
+
+Algum textoSem nova linha
+Mas agora há uma nova linha
+
+---------------------------
+
+    OU SEJA: a tag de fechamento do PHP traz a próxima linha para cima (se não quebrada com \n), mas quando entra ele começa uma nova.
+
+---------------------------
+
+Exemplo #2 Exemplos de entrada e saída do interpretador PHP
+<?php
+    echo "Isto é um teste\n";
+?>
+
+<?php echo "Isto é um teste\n" ?>
+
+<?php echo "A última tag de fechamento foi omitida\n";
+
+Output of the above example in PHP 8.5.0:
+
+Isto é um teste
+
+Isto é um teste
+
+A última tag de fechamento foi omitida
+
+    Nota:
+
+    A tag de fechamento de um bloco PHP no final de um arquivo é opcional e, em alguns casos, omiti-la é útil ao usar include ou require, assim espaços em branco indesejados não ocorrerão no final dos arquivos, e ainda será possível adicionar cabeçalhos à resposta posteriormente. Isso também é útil ao usar o buffer de saída, para evitar a inclusão de espaços em branco indesejados no final das partes geradas pelos arquivos incluídos.
+
+Melhore Esta Página
+Aprenda Como Melhorar Esta Página • Envie uma Solicitação de Modificação • Reporte um Problema
+＋adicionar nota
+Notas de Usuários 2 notes
+up
+down
+36
+Krishna Srikanth ¶
+19 years ago
+
+Do not mis interpret
+
+<?php echo 'Ending tag excluded'; 
+
+with
+
+<?php echo 'Ending tag excluded';
+<p>But html is still visible</p>
+
+The second one would give error. Exclude ?> if you no more html to write after the code.
+
+up
+down
+9
+M1001 ¶
+3 years ago
+
+You are also able to write more than one statement in one line, just separating with a semicolon, example:
+
+<?php
+echo "a"; echo "b"; echo "c";
+#The output will be "abc" with no errors
+?>
+

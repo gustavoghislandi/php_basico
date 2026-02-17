@@ -1,0 +1,278 @@
+ O PHP suporta comentários no estilo C, C++ e Unix shell (estilo Perl). Por exemplo:
+
+Exemplo #1 Comentários
+<?php
+    echo "Isto é um teste\n"; // Este é um comentário de uma linha no estilo C++ 
+    /* Este é um comentário de várias linhas
+       mais uma linha de comentário */
+    echo "Este é mais um teste\n";
+    echo "Um teste final\n"; # Este é um comentário de uma linha no estilo shell
+?>
+
+Os estilos de comentário de uma linha comentam apenas até o final da linha ou do bloco atual de código PHP, o que ocorrer primeiro. Isso significa que o código HTML após // ... ?> ou # ... ?> SERÁ impresso: ?> sai do modo PHP e retorna ao modo HTML, e // ou # não podem influenciar isso.
+
+Exemplo #2 Comentários de uma linha
+<h1>Este é um <?php # echo 'simples';?>exemplo</h1>
+<p>O cabeçalho acima dirá 'Este é um exemplo'.</p>
+
+Os comentários no estilo C terminam no primeiro */ encontrado. Certifique-se de não aninhar comentários no estilo C. É fácil cometer esse erro ao tentar comentar um grande bloco de código.
+
+<?php
+ /*
+    echo 'Isto é um teste'; /* Este comentário causará um problema */
+ */
+?>
+
+Output of the above example in PHP 8.5.0:
+
+
+Parse error: syntax error, unexpected token "*", expecting end of file in script on line 4
+
+Melhore Esta Página
+Aprenda Como Melhorar Esta Página • Envie uma Solicitação de Modificação • Reporte um Problema
+＋adicionar nota
+Notas de Usuários 11 notes
+up
+down
+468
+J. Prettyman ¶
+12 years ago
+
+Notes can come in all sorts of shapes and sizes. They vary, and their uses are completely up to the person writing the code. However, I try to keep things consistent in my code that way it's easy for the next person to read. So something like this might help...
+
+<?php
+
+//======================================================================
+// CATEGORY LARGE FONT
+//======================================================================
+
+//-----------------------------------------------------
+// Sub-Category Smaller Font
+//-----------------------------------------------------
+
+/* Title Here Notice the First Letters are Capitalized */
+
+# Option 1
+# Option 2
+# Option 3
+
+/*
+ * This is a detailed explanation
+ * of something that should require
+ * several paragraphs of information.
+ */
+ 
+// This is a single line quote.
+?>
+
+up
+down
+327
+M Spreij ¶
+20 years ago
+
+A nice way to toggle the commenting of blocks of code can be done by mixing the two comment styles:
+<?php
+//*
+if ($foo) {
+  echo $bar;
+}
+// */
+sort($morecode);
+?>
+
+Now by taking out one / on the first line..
+
+<?php
+/*
+if ($foo) {
+  echo $bar;
+}
+// */
+sort($morecode);
+?>
+..the block is suddenly commented out.
+This works because a /* .. */ overrides //. You can even "flip" two blocks, like this:
+<?php
+//*
+if ($foo) {
+  echo $bar;
+}
+/*/
+if ($bar) {
+  echo $foo;
+}
+// */
+?>
+vs
+<?php
+/*
+if ($foo) {
+  echo $bar;
+}
+/*/
+if ($bar) {
+  echo $foo;
+}
+// */
+?>
+
+up
+down
+46
+aetonsi ¶
+3 years ago
+
+As of php 8, single line comments starting exactly with "#[" have a special meaning: they are treated as "attributes", and they must respect the expected syntax. See: https://www.php.net/manual/en/language.attributes.php
+
+So the following code throws an error in php 8+, while it is perfectly valid in php <8:
+<?php
+#[~~my super cool comment~~~]
+?>
+
+To be safe, just always use "//" comments instead of "#". Maybe in the future there will be other special meanings for the "#" comments, who knows.
+
+159
+magnesium dot oxide dot play+php at gmail dot com ¶
+12 years ago
+
+It is worth mentioning that, HTML comments have no meaning in PHP parser. So,
+
+<!-- comment
+<?php echo some_function(); ?>
+-->
+
+WILL execute some_function() and echo result inside HTML comment.
+
+up
+down
+63
+hcderaad at wanadoo dot nl ¶
+20 years ago
+
+Comments in PHP can be used for several purposes, a very interesting one being that you can generate API documentation directly from them by using PHPDocumentor (http://www.phpdoc.org/).
+
+Therefor one has to use a JavaDoc-like comment syntax (conforms to the DocBook DTD), example:
+<?php
+/**
+* The second * here opens the DocBook commentblock, which could later on<br>
+* in your development cycle save you a lot of time by preventing you having to rewrite<br>
+* major documentation parts to generate some usable form of documentation.
+*/
+?>
+Some basic html-like formatting is supported with this (ie <br> tags) to create something of a layout.
+
+53
+J Lee ¶
+19 years ago
+
+MSpreij (8-May-2005) says  /* .. */ overrides //  
+Anonymous (26-Jan-2006) says // overrides /* .. */
+
+Actually, both are correct. Once a comment is opened, *everything* is ignored until the end of the comment (or the end of the php block) is reached.
+
+Thus, if a comment is opened with: 
+   //  then /* and */ are "overridden" until after end-of-line 
+   /*  then // is "overridden" until after */
+
+45
+Steve ¶
+21 years ago
+
+Be careful when commenting out regular expressions.
+
+E.g. the following causes a parser error.
+
+I do prefer using # as regexp delimiter anyway so it won't hurt me ;-)
+
+<?php 
+
+/*
+
+ $f->setPattern('/^\d.*/');
+
+*/
+
+?>
+
+up
+down
+28
+theblazingangel at aol dot com ¶
+18 years ago
+
+it's perhaps not obvious to some, but the following code will cause a parse error! the ?> in //?> is not treated as commented text, this is a result of having to handle code on one line such as <?php echo 'something'; //comment ?>
+
+<?php
+if(1==1)
+{
+    //?>
+}
+?>
+
+i discovered this "anomally" when i commented out a line of code containing a regex which itself contained ?>, with the // style comment.
+e.g. //preg_match('/^(?>c|b)at$/', 'cat', $matches);
+will cause an error while commented! using /**/ style comments provides a solution. i don't know about # style comments, i don't ever personally use them.
+
+20
+jballard at natoga dot com ¶
+15 years ago
+
+Comments do NOT take up processing power.
+
+So, for all the people who argue that comments are undesired because they take up processing power now have no reason to comment ;)
+
+<?php
+
+// Control
+echo microtime(), "<br />"; // 0.25163600 1292450508
+echo microtime(), "<br />"; // 0.25186000 1292450508
+
+// Test
+echo microtime(), "<br />"; // 0.25189700 1292450508
+# TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST
+# .. Above comment repeated 18809 times ..
+echo microtime(), "<br />"; // 0.25192100 1292450508
+
+?>
+
+They take up about the same amount of time (about meaning on a repeated testing, sometimes the difference between the control and the test was negative and sometimes positive).
+
+up
+down
+10
+Wolfsbay at ya dot ru ¶
+15 years ago
+
+If you are using editor with code highlight, it’s much easier to notice error like /* */ */.
+
+up
+down
+10
+fun at nybbles dot com ¶
+19 years ago
+
+a trick I have used in all languages to temporarily block out large sections (usually for test/debug/new-feature purposes), is to set (or define) a var at the top, and use that to conditionally comment the blocks; an added benefit over if(0) (samuli's comment from nov'05) is that u can have several versions or tests running at once, and u dont require cleanup later if u want to keep the blocks in:  just reset the var.
+
+personally, I use this more to conditionally include code for new feature testing, than to block it out,,,, but hey, to each their own :)
+
+this is also the only safe way I know of to easily nest comments in any language, and great for multi-file use, if the conditional variables are placed in an include :)
+
+for example, placed at top of file:
+
+<?php $ver3 = TRUE;  
+       $debug2 = FALSE; 
+?> 
+
+and then deeper inside the file: 
+
+<?php if ($ver3) {
+           print("This code is included since we are testing version 3");
+         }
+?>
+
+<?php if ($debug2) {
+           print("This code is 'commented' out");
+         }
+?>
+
