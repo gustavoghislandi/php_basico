@@ -1,0 +1,168 @@
+Perfeito! Vamos destrinchar isso de forma clara, porque o `chmod 755` parece “números estranhos” à primeira vista, mas tem lógica. 😎
+
+AO FINAL COLOQUEI O MODO SÓ LEITURA, QUE BASTA PARA ARQUIVOS ESTÁTICOS.
+
+---
+
+# 1️⃣ O que é `chmod`
+
+`chmod` = **change mode** → muda permissões de arquivos e pastas no Linux.
+
+* Cada arquivo/pasta tem **3 tipos de permissões**: **leitura (r), escrita (w), execução (x)**
+* E **3 grupos de usuários**:
+
+  1. **dono** do arquivo
+  2. **grupo** do arquivo
+  3. **outros** (todos os demais usuários)
+
+---
+
+# 2️⃣ Entendendo o `-R`
+
+* `-R` = recursivo → aplica a pasta e todos os arquivos/pastas dentro dela
+
+Exemplo:
+
+```bash
+sudo chmod -R 755 /var/www/html/projeto/_css
+```
+
+Significa: aplica permissões **para todos os arquivos e subpastas dentro de `_css`**.
+
+---
+
+# 3️⃣ O “755” explicado
+
+O número é **octal**, ou seja, cada dígito representa permissões de um grupo:
+
+```
+r = 4
+w = 2
+x = 1
+```
+
+Você soma para cada grupo. Então:
+
+* **7** (dono) = 4 + 2 + 1 = **rwx** → leitura, escrita e execução
+* **5** (grupo) = 4 + 0 + 1 = **r-x** → leitura e execução
+* **5** (outros) = 4 + 0 + 1 = **r-x** → leitura e execução
+
+Então `755` significa:
+
+| Usuário | Permissão |
+| ------- | --------- |
+| Dono    | rwx (7)   |
+| Grupo   | r-x (5)   |
+| Outros  | r-x (5)   |
+
+> Para pastas, **x significa “entrar na pasta”**, para arquivos, significa “executar o arquivo” (não é tão importante para CSS, mas essencial para scripts).
+
+---
+
+# 4️⃣ Outros exemplos comuns
+
+* `700` → rwx — — — → só o dono acessa
+* `644` → rw- r-- r-- → arquivos normais: dono lê/escreve, grupo/outros só lêem (muito usado para CSS, imagens)
+* `777` → rwx rwx rwx → qualquer usuário pode ler, escrever e executar (geralmente **não recomendado**)
+
+---
+
+# 5️⃣ Por que usamos `755` para `_css`
+
+* A pasta precisa permitir que o Apache **entre nela (x)** e **leia os arquivos (r)**
+* O dono (você ou `www-data`) precisa de **escrita (w)** para poder atualizar arquivos no futuro
+* Grupo e outros só precisam de **leitura/execução** → suficiente para o Apache servir os arquivos estáticos
+
+---
+Tabela chmod 000 → 777
+
+| Número | Dono | Grupo | Outros | Explicação                                                              |
+| ------ | ---- | ----- | ------ | ----------------------------------------------------------------------- |
+| 000    | ---  | ---   | ---    | Ninguém pode ler, escrever ou executar                                  |
+| 100    | --x  | ---   | ---    | Dono só pode executar                                                   |
+| 200    | -w-  | ---   | ---    | Dono só pode escrever                                                   |
+| 300    | -wx  | ---   | ---    | Dono pode escrever e executar                                           |
+| 400    | r--  | ---   | ---    | Dono só pode ler                                                        |
+| 500    | r-x  | ---   | ---    | Dono pode ler e executar                                                |
+| 600    | rw-  | ---   | ---    | Dono pode ler e escrever                                                |
+| 700    | rwx  | ---   | ---    | Dono pode ler, escrever e executar                                      |
+| 010    | ---  | --x   | ---    | Grupo só pode executar                                                  |
+| 020    | ---  | -w-   | ---    | Grupo só pode escrever                                                  |
+| 030    | ---  | -wx   | ---    | Grupo pode escrever e executar                                          |
+| 040    | ---  | r--   | ---    | Grupo só pode ler                                                       |
+| 050    | ---  | r-x   | ---    | Grupo pode ler e executar                                               |
+| 060    | ---  | rw-   | ---    | Grupo pode ler e escrever                                               |
+| 070    | ---  | rwx   | ---    | Grupo pode ler, escrever e executar                                     |
+| 001    | ---  | ---   | --x    | Outros só podem executar                                                |
+| 002    | ---  | ---   | -w-    | Outros só podem escrever                                                |
+| 003    | ---  | ---   | -wx    | Outros podem escrever e executar                                        |
+| 004    | ---  | ---   | r--    | Outros só podem ler                                                     |
+| 005    | ---  | ---   | r-x    | Outros podem ler e executar                                             |
+| 006    | ---  | ---   | rw-    | Outros podem ler e escrever                                             |
+| 007    | ---  | ---   | rwx    | Outros podem ler, escrever e executar                                   |
+| 755    | rwx  | r-x   | r-x    | Dono full, grupo e outros só ler/entrar → usado para pastas públicas    |
+| 644    | rw-  | r--   | r--    | Dono lê/escreve, grupo e outros só lêem → usado para arquivos estáticos |
+| 777    | rwx  | rwx   | rwx    | Todo mundo pode tudo → não recomendado                                  |
+
+
+Como ler o número
+
+    Cada dígito representa dono / grupo / outros
+
+    Cada número é a soma de r=4, w=2, x=1
+
+    Exemplo 755:
+
+    7 = 4+2+1 → rwx (dono)
+    5 = 4+0+1 → r-x (grupo)
+    5 = 4+0+1 → r-x (outros)
+
+
+Perfeito, vamos separar os casos: 😎
+
+---
+
+# 1️⃣ Para arquivos estáticos (CSS, JS, imagens)
+
+* **Leitura (r)** → **suficiente**.
+  O Apache só precisa ler o conteúdo e enviar para o navegador.
+* **Execução (x)** → só importa para **pastas**, não arquivos. Significa “pode entrar na pasta”.
+* **Escrita (w)** → **não é necessária** para servir CSS. Só é necessária se o Apache for gerar ou modificar arquivos (logs, uploads, cache, etc.).
+
+✅ Conclusão: para CSS, JS, imagens → Apache só precisa **ler as pastas e os arquivos**.
+
+---
+
+# 2️⃣ Para pastas
+
+* **x (executar)** → necessário para “entrar” na pasta e acessar arquivos dentro.
+* **r (ler)** → necessário para listar os arquivos se quiser (não obrigatório se você só sabe o nome exato).
+* **w (escrever)** → só necessário se Apache vai criar/editar arquivos na pasta.
+
+---
+
+# 3️⃣ Por que usamos `755` então?
+
+```text
+Dono (www-data) = rwx → Apache pode entrar na pasta e ler arquivos, e escrever se precisar gerar algo.
+Grupo = r-x → leitura/entrada para grupo (segurança)
+Outros = r-x → leitura/entrada para todos os usuários (permite servir arquivos)
+```
+
+Para um site estático simples, **poderia usar 755 ou 750**, desde que o Apache tenha **r+x** para pastas e **r** para arquivos.
+
+---
+
+Modo só leitura:
+
+# 1️⃣ Pastas: leitura e entrar para Apache, sem escrita
+sudo find /var/www/html/projeto/_css -type d -exec chmod 755 {} \;
+
+# 2️⃣ Arquivos (CSS, imagens, etc): apenas leitura para Apache
+sudo find /var/www/html/projeto/_css -type f -exec chmod 644 {} \;
+
+# 3️⃣ Dono e grupo: Apache (www-data)
+sudo chown -R www-data:www-data /var/www/html/projeto/_css
+
+# 4️⃣ Reinicia Apache
+sudo systemctl restart apache2

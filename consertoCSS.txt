@@ -1,0 +1,68 @@
+Causa:
+- Apache não conseguia acessar arquivos estáticos (.css) porque a pasta _css não existia ou estava com permissões restritas.
+- PHP funciona porque é processado pelo interpretador, mas CSS e imagens precisam de leitura direta pelo Apache.
+
+Solução:
+1. Criar a pasta se não existir:
+   sudo mkdir -p /var/www/html/projeto/_css
+2. Copiar o CSS para a pasta:
+   sudo cp /caminho/do/seu/estilo.css /var/www/html/projeto/_css/
+3. Liberar acesso para Apache:
+   sudo chmod -R 755 /var/www/html/projeto/_css
+   sudo chown -R www-data:www-data /var/www/html/projeto/_css
+4. Reiniciar o Apache:
+   sudo systemctl restart apache2
+
+Observações:
+- Sempre usar o caminho absoluto correto (/var/www/html/projeto/_css).
+- Arquivos estáticos precisam de permissão de leitura para o Apache; arquivos PHP não.
+- Alternativa: renomear pasta _css → css se preferir evitar configurações extras.
+
+------------------------------------------------------
+A solução faltava era a 3 e a 4. Liberar acesso.
+------------------------------------------------------
+
+
+Por que é necessário que o apache2 tenha acesso, se já está dentro do que ele deveria ter?
+
+Ah, essa é uma pergunta ótima, porque muita gente assume que “se o arquivo está dentro do /var/www/html, o Apache já acessa automaticamente”. Mas não é bem assim. Vou explicar passo a passo. 😎
+
+1️⃣ Apache precisa ler arquivos estáticos
+
+Arquivos PHP são processados pelo interpretador PHP. O Apache passa o arquivo para o PHP, que roda como módulo ou CGI, e devolve o resultado.
+→ Apache não precisa “ler” o conteúdo real do arquivo, apenas entregar a saída do PHP.
+
+Arquivos estáticos (CSS, JS, imagens) são servidos diretamente pelo Apache.
+→ Para isso, o processo www-data precisa ter permissão de leitura e execução nas pastas e arquivos.
+
+2️⃣ Como permissões funcionam no Linux
+
+Cada arquivo/pasta tem dono, grupo e outros:
+
+rwx r-x r-x
+ |   |   |
+ dono grupo outros
+
+
+r → leitura
+
+w → escrita
+
+x → executar (para pastas significa “entrar na pasta”)
+
+Mesmo estando dentro de /var/www/html, se a pasta ou os arquivos não tiverem leitura/execution para www-data, o Apache não consegue acessar → 403 Forbidden.
+
+3️⃣ Por isso usamos:
+sudo chmod -R 755 /var/www/html/projeto/_css
+sudo chown -R www-data:www-data /var/www/html/projeto/_css
+
+
+chmod 755 → dono tem rwx, grupo e outros têm r-x → Apache pode entrar na pasta e ler os arquivos
+
+chown www-data:www-data → garante que o processo Apache seja dono e tenha todas as permissões necessárias
+
+Mesmo que a pasta esteja “dentro do DocumentRoot”, se as permissões originais do Linux não permitirem leitura pelo Apache, ele não consegue servir os arquivos estáticos.
+
+4️⃣ Resumindo em uma frase
+
+O Apache precisa de permissão de leitura nas pastas e arquivos para servir CSS/JS/imagens; estar dentro de /var/www/html não garante acesso automático.

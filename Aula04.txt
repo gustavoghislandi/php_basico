@@ -80,3 +80,4 @@ Ficaria assim:
 
 Deu algum problema para renderizar o CSS no server... preciso investigar e consertar.
 
+Conserto colocado no arquivo 'consertoCSS.txt'
