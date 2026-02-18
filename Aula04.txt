@@ -1,0 +1,82 @@
+Variáveis em PHP
+
+PHP é uma linguagem de scripts, que é também uma linguagem de programação.
+
+O comando 'echo' é de eco mesmo, aquele som que retorna. Ou seja, você diz algo ao PHP e ele retorna esse algo.
+
+'echo' tem 'print' e 'printf'. Mas não vamos ver isso agora.
+
+------------------
+
+Toda variável em PHP vai começar com um $.
+
+Os nomes de variáveis devem ser todos em letras minúsculas (PHP é case sensitive).
+
+$idade = 3;
+$sal = 1823.45;
+$nome = "Leonardo";
+$casado = false;
+
+Se você perceber, cada uma dessas variáveis é de um tipo diferente.
+
+No PHP não existe declaração de variáveis.
+A atribuição de tipo é por COERÇÃO. [Lembra o JS]
+
+---
+
+O PHP vai fazer de tudo para não te mostrar erros, inclusive, modificar tipos de variáveis.
+
+---
+
+Ele aceita Inteiro, Real, Caractere e Lógico.
+
+É possível forçar uma conversão usando um "typecast".
+
+Inteiro     (int), (integer)
+Real        (real), (float), (double)
+Caractere   (string)
+Lógico      Não existe, porque é considerado inteiro. 
+
+    Para o tipo Lógico:
+    true = 1
+    false = vazio.
+
+-------------
+NOTA:
+        No VS Code, para conseguir os autocompletes de HTML tem de mudar a extensão do arquivo para .html. Depois retorne para .php.
+
+-------------
+
+Se for colocar:
+
+    (int)"Gustavo" aparece 0
+    (int)"10Gustavo" aparece 10
+    (int)"Gustavo10" aparece 0
+
+    O número tem que ser no início
+
+-------------------------
+
+O ponto final serve para concatenar.
+
+    echo $nome." tem ".$idade." anos.";
+
+Mas é possível colocar tudo dentro de aspas (SEMPRE DUPLAS):
+
+    $nome2 = "Maria";
+    $idade2 = 18;
+
+    echo "<br>$nome2 tem $idade2 anos."
+
+    Saída: Maria tem 18 anos.
+
+Aspas simples funcionam, mas imprimem as variáveis. 
+Ficaria assim:
+
+    Saída: $nome2 tem $idade2 anos.
+
+
+--------------------------
+
+Deu algum problema para renderizar o CSS no server... preciso investigar e consertar.
+

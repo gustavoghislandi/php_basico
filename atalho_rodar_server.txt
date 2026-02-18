@@ -1,0 +1,13 @@
+Apache (servidor web)
+
+    sudo systemctl start apache2    # iniciar
+    sudo systemctl stop apache2     # parar
+    sudo systemctl restart apache2  # reiniciar
+    sudo systemctl status apache2   # ver status
+
+
+Testar Apache
+
+    Abra o navegador e vá para:
+
+        http://localhost
